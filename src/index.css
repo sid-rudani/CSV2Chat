@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-bubble-sender: var(--bubble-sender);
+  --color-bubble-receiver: var(--bubble-receiver);
+  --color-bubble-text: var(--bubble-text);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+}
+
+@layer base {
+  :root {
+    /* Default theme: friends (warm, cozy) */
+    --background: #fdfbf7;
+    --foreground: #2d3748;
+    --primary: #f6ad55;
+    --primary-foreground: #ffffff;
+    --bubble-sender: #e2e8f0;
+    --bubble-receiver: #fbd38d;
+    --bubble-text: #2d3748;
+    --sidebar: #f7fafc;
+    --sidebar-foreground: #2d3748;
+    --accent: #ed8936;
+    --accent-foreground: #ffffff;
+  }
+
+  .theme-spicy {
+    --background: #1a0f14;
+    --foreground: #fde8e8;
+    --primary: #e53e3e;
+    --primary-foreground: #ffffff;
+    --bubble-sender: #2d3748;
+    --bubble-receiver: #c53030;
+    --bubble-text: #ffffff;
+    --sidebar: #120a0e;
+    --sidebar-foreground: #fde8e8;
+    --accent: #fc8181;
+    --accent-foreground: #1a202c;
+  }
+
+  .theme-besties {
+    --background: #faf5ff;
+    --foreground: #44337a;
+    --primary: #b794f4;
+    --primary-foreground: #ffffff;
+    --bubble-sender: #e9d8fd;
+    --bubble-receiver: #d6bcfa;
+    --bubble-text: #2b6cb0;
+    --sidebar: #f3ebff;
+    --sidebar-foreground: #44337a;
+    --accent: #9f7aea;
+    --accent-foreground: #ffffff;
+  }
+
+  .theme-family {
+    --background: #ebf8ff;
+    --foreground: #2a4365;
+    --primary: #4299e1;
+    --primary-foreground: #ffffff;
+    --bubble-sender: #bee3f8;
+    --bubble-receiver: #90cdf4;
+    --bubble-text: #2a4365;
+    --sidebar: #e2e8f0;
+    --sidebar-foreground: #2a4365;
+    --accent: #3182ce;
+    --accent-foreground: #ffffff;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30 transition-colors duration-500;
+  }
+}
+
+/* Custom Scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-foreground/20 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-foreground/40;
+}
+
+/* Glassmorphism utility */
+.glass {
+  @apply bg-background/70 backdrop-blur-md border border-foreground/10;
+}
