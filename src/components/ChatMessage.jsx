@@ -36,22 +36,33 @@ export default function ChatMessage({ msg, isSender, dp }) {
   return (
     <div className={clsx("flex w-full mb-4", isSender ? "justify-end" : "justify-start")}>
       {!isSender && (
-        <div 
-          onClick={handleDPClick}
-          className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 mr-2 shadow-sm font-bold overflow-hidden cursor-pointer hover:ring-2 hover:ring-primary transition-all relative group"
-          title={`Upload DP for ${msg.author}`}
-        >
-          <input 
-            type="file" 
-            accept="image/*" 
-            className="hidden" 
-            ref={fileInputRef} 
-            onChange={handleFileChange} 
-          />
-          {dp ? <img src={dp} alt={msg.author} className="w-full h-full object-cover" /> : msg.author[0]?.toUpperCase()}
-          <div className="absolute inset-0 bg-black/50 hidden group-hover:flex items-center justify-center text-[10px] text-white">
-            DP
+        <div className="relative group mr-2">
+          <div 
+            onClick={handleDPClick}
+            className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 shadow-sm font-bold overflow-hidden cursor-pointer hover:ring-2 hover:ring-primary transition-all relative"
+            title={dp ? "Update DP" : `Upload DP for ${msg.author}`}
+          >
+            <input 
+              type="file" 
+              accept="image/*" 
+              className="hidden" 
+              ref={fileInputRef} 
+              onChange={handleFileChange} 
+            />
+            {dp ? <img src={dp} alt={msg.author} className="w-full h-full object-cover" /> : msg.author[0]?.toUpperCase()}
+            <div className="absolute inset-0 bg-black/50 hidden group-hover:flex items-center justify-center text-[10px] text-white">
+              {dp ? "EDIT" : "DP"}
+            </div>
           </div>
+          {dp && (
+            <button
+              onClick={() => updateDP(msg.author, null)}
+              className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white rounded-full text-[10px] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:scale-110 shadow-sm"
+              title="Clear DP"
+            >
+              ×
+            </button>
+          )}
         </div>
       )}
       

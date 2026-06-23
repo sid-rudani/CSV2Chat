@@ -17,6 +17,7 @@
 @layer base {
   :root {
     /* Default theme: friends (warm, cozy) */
+    --bg-gradient: linear-gradient(135deg, #fdfbf7 0%, #faeddb 100%);
     --background: #fdfbf7;
     --foreground: #2d3748;
     --primary: #f6ad55;
@@ -24,13 +25,14 @@
     --bubble-sender: #e2e8f0;
     --bubble-receiver: #fbd38d;
     --bubble-text: #2d3748;
-    --sidebar: #f7fafc;
+    --sidebar: rgba(247, 250, 252, 0.85);
     --sidebar-foreground: #2d3748;
     --accent: #ed8936;
     --accent-foreground: #ffffff;
   }
 
   .theme-spicy {
+    --bg-gradient: linear-gradient(135deg, #1a0f14 0%, #4a0e1b 100%);
     --background: #1a0f14;
     --foreground: #fde8e8;
     --primary: #e53e3e;
@@ -38,35 +40,37 @@
     --bubble-sender: #2d3748;
     --bubble-receiver: #c53030;
     --bubble-text: #ffffff;
-    --sidebar: #120a0e;
+    --sidebar: rgba(18, 10, 14, 0.85);
     --sidebar-foreground: #fde8e8;
     --accent: #fc8181;
     --accent-foreground: #1a202c;
   }
 
   .theme-besties {
+    --bg-gradient: linear-gradient(135deg, #faf5ff 0%, #e9d8fd 100%);
     --background: #faf5ff;
     --foreground: #44337a;
     --primary: #b794f4;
     --primary-foreground: #ffffff;
-    --bubble-sender: #e9d8fd;
+    --bubble-sender: #ffffff;
     --bubble-receiver: #d6bcfa;
     --bubble-text: #2b6cb0;
-    --sidebar: #f3ebff;
+    --sidebar: rgba(243, 235, 255, 0.85);
     --sidebar-foreground: #44337a;
     --accent: #9f7aea;
     --accent-foreground: #ffffff;
   }
 
   .theme-family {
+    --bg-gradient: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%);
     --background: #ebf8ff;
     --foreground: #2a4365;
     --primary: #4299e1;
     --primary-foreground: #ffffff;
-    --bubble-sender: #bee3f8;
+    --bubble-sender: #ffffff;
     --bubble-receiver: #90cdf4;
     --bubble-text: #2a4365;
-    --sidebar: #e2e8f0;
+    --sidebar: rgba(226, 232, 240, 0.85);
     --sidebar-foreground: #2a4365;
     --accent: #3182ce;
     --accent-foreground: #ffffff;
@@ -75,7 +79,9 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary/30 transition-colors duration-500;
+    background-image: var(--bg-gradient);
+    background-attachment: fixed;
+    @apply text-foreground antialiased selection:bg-primary/30 transition-all duration-500 min-h-screen;
   }
 }
 

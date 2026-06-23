@@ -1,5 +1,5 @@
 import { useChatContext } from '../context/ChatContext';
-import { UploadCloud, MessageSquare, Trash2, Settings, Palette } from 'lucide-react';
+import { UploadCloud, MessageSquare, Trash2, Settings, Palette, PlusCircle } from 'lucide-react';
 import clsx from 'clsx';
 
 export default function Sidebar() {
@@ -13,12 +13,19 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="w-80 h-full bg-sidebar text-sidebar-foreground border-r border-foreground/10 flex flex-col shrink-0 transition-colors duration-500">
-      <div className="p-4 border-b border-foreground/10">
+    <div className="w-80 h-full bg-sidebar backdrop-blur-md text-sidebar-foreground border-r border-foreground/10 flex flex-col shrink-0 transition-colors duration-500">
+      <div className="p-4 border-b border-foreground/10 flex items-center justify-between">
         <h1 className="text-xl font-bold flex items-center gap-2">
           <MessageSquare className="w-6 h-6 text-primary" />
           Chat Viewer
         </h1>
+        <button 
+          onClick={() => setActiveChatId(null)}
+          className="p-1.5 rounded-full hover:bg-foreground/10 text-primary transition-colors"
+          title="Add New Chat"
+        >
+          <PlusCircle className="w-5 h-5" />
+        </button>
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 space-y-2">
