@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useRef } from 'react';
 import { useChatContext } from '../context/ChatContext';
 
-export default function ChatMessage({ msg, isSender, dp }) {
+export default function ChatMessage({ msg, isSender, dp, displayName }) {
   const { updateDP } = useChatContext();
   const fileInputRef = useRef(null);
 
@@ -49,7 +49,7 @@ export default function ChatMessage({ msg, isSender, dp }) {
               ref={fileInputRef} 
               onChange={handleFileChange} 
             />
-            {dp ? <img src={dp} alt={msg.author} className="w-full h-full object-cover" /> : msg.author[0]?.toUpperCase()}
+            {dp ? <img src={dp} alt={displayName || msg.author} className="w-full h-full object-cover" /> : (displayName || msg.author)[0]?.toUpperCase()}
             <div className="absolute inset-0 bg-black/50 hidden group-hover:flex items-center justify-center text-[10px] text-white">
               {dp ? "EDIT" : "DP"}
             </div>
@@ -74,7 +74,7 @@ export default function ChatMessage({ msg, isSender, dp }) {
       )}>
         {!isSender && (
           <span className="text-xs font-bold text-foreground/60 mb-1">
-            {msg.author}
+            {displayName || msg.author}
           </span>
         )}
         

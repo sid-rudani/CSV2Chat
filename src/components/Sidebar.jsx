@@ -3,7 +3,7 @@ import { UploadCloud, MessageSquare, Trash2, Settings, Palette, PlusCircle } fro
 import clsx from 'clsx';
 
 export default function Sidebar() {
-  const { chats, activeChatId, setActiveChatId, removeChat, theme, setTheme } = useChatContext();
+  const { chats, activeChatId, setActiveChatId, removeChat, theme, setTheme, isGhostMode } = useChatContext();
 
   const themes = [
     { id: 'friends', label: 'Friends', color: 'bg-orange-400' },
@@ -46,7 +46,7 @@ export default function Sidebar() {
               )}
             >
               <div className="truncate font-medium flex-1">
-                {chat.name || 'Unnamed Chat'}
+                {isGhostMode ? 'Ghost' : (chat.name || 'Unnamed Chat')}
               </div>
               <button
                 onClick={(e) => {

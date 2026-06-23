@@ -9,6 +9,7 @@ export const ChatProvider = ({ children }) => {
   const [activeChatId, setActiveChatId] = useState(null);
   const [theme, setTheme] = useState('friends');
   const [userPreferences, setUserPreferences] = useState({}); // Stores DPs per user
+  const [isGhostMode, setIsGhostMode] = useState(false);
 
   // Load from LocalStorage on mount
   useEffect(() => {
@@ -69,6 +70,8 @@ export const ChatProvider = ({ children }) => {
         removeChat,
         userPreferences,
         updateDP,
+        isGhostMode,
+        setIsGhostMode,
       }}
     >
       {children}
